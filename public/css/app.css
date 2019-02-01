@@ -58,16 +58,16 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block
 }
 
-body {
-    margin: 0;
-    font-family: Nunito, sans-serif;
-    font-size: .9rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #212529;
-    text-align: left;
-    background-color: #f8fafc
-}
+/*body {*/
+/*margin: 0;*/
+/*font-family: Nunito, sans-serif;*/
+/*font-size: .9rem;*/
+/*font-weight: 400;*/
+/*line-height: 1.6;*/
+/*color: #212529;*/
+/*text-align: left;*/
+/*background-color: #f8fafc*/
+/*}*/
 
 [tabindex="-1"]:focus {
     outline: 0 !important
@@ -84,10 +84,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5rem
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 1rem
-}
+/*p {*/
+/*margin-top: 0;*/
+/*margin-bottom: 1rem*/
+/*}*/
 
 abbr[data-original-title], abbr[title] {
     text-decoration: underline;
@@ -191,13 +191,13 @@ figure {
     margin: 0 0 1rem
 }
 
-img {
-    border-style: none
-}
+/*img {*/
+/*border-style: none*/
+/*}*/
 
-img, svg {
-    vertical-align: middle
-}
+/*img, svg {*/
+/*vertical-align: middle*/
+/*}*/
 
 svg {
     overflow: hidden
@@ -541,13 +541,13 @@ pre code {
     }
 }
 
-.container-fluid {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto
-}
+/*.container-fluid {*/
+/*width: 100%;*/
+/*padding-right: 15px;*/
+/*padding-left: 15px;*/
+/*margin-right: auto;*/
+/*margin-left: auto*/
+/*}*/
 
 .row {
     display: flex;
@@ -3627,10 +3627,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     display: block
 }
 
-.navbar {
-    position: relative;
-    padding: .5rem 1rem
-}
+/*.navbar {*/
+/*position: relative;*/
+/*padding: .5rem 1rem*/
+/*}*/
 
 .navbar, .navbar > .container, .navbar > .container-fluid {
     display: flex;
@@ -3653,13 +3653,13 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     text-decoration: none
 }
 
-.navbar-nav {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none
-}
+/*.navbar-nav {*/
+/*display: flex;*/
+/*flex-direction: column;*/
+/*padding-left: 0;*/
+/*margin-bottom: 0;*/
+/*list-style: none*/
+/*}*/
 
 .navbar-nav .nav-link {
     padding-right: 0;
