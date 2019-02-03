@@ -23,15 +23,35 @@ class UsersTableRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|string|max:10|unique:users',
-            'password' => 'required|min:6',
-            'city' => 'nullable|string|max:255',
-            'street' => 'nullable|string|max:255',
-            'house' => 'nullable|string|max:255',
-            'room' => 'nullable|string|max:255',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                {
+                    return [
+                        'name' => 'required|max:255',
+                        'email' => 'required|email|unique:users',
+                        'phone' => 'required|string|max:10|unique:users',
+                        'password' => 'required|min:6',
+                        'city' => 'nullable|string|max:255',
+                        'street' => 'nullable|string|max:255',
+                        'house' => 'nullable|string|max:255',
+                        'room' => 'nullable|string|max:255'
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'name' => 'required|max:255',
+                        'email' => 'required|email|unique:users,id,' . $this->user->id,
+                        'phone' => 'required|string|max:10|unique:users,id,' . $this->user->id,
+                        'city' => 'nullable|string|max:255',
+                        'street' => 'nullable|string|max:255',
+                        'house' => 'nullable|string|max:255',
+                        'room' => 'nullable|string|max:255',
+                    ];
+                }
+            default:
+                break;
+        }
     }
 }

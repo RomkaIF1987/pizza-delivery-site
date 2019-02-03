@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersTableRequest;
 use App\User;
-use Illuminate\Http\Request;
 use Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -27,7 +27,8 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create', [
-            $user = new User()
+            $user = new User(),
+            'user' => $user
         ]);
     }
 
@@ -41,7 +42,6 @@ class UserController extends Controller
     {
         $params = $request->validated();
         $params['password'] = Hash::make($request->password);
-//        $params['password'] = bcrypt('password');
         $user = User::create($params);
 
         return redirect(route('home-page'))->with(['success' => 'Your registration has been successful, please login.']);
@@ -50,45 +50,53 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('users.show', [
+            'user' => Auth::user()
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('users.edit', [
+            'user' => auth()->user()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param UsersTableRequest $request
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersTableRequest $request, User $user)
     {
-        //
+        $params = $request->validated();
+        $user->update($params);
+
+        return redirect()->route('home-page');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param User $user
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('home-page');
     }
 }

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('house')->nullable();
             $table->string('room')->nullable();
             $table->string('role')->default('buyer');
+            $table->string('logo')->default('DefaultProfile.png');
             $table->rememberToken();
             $table->timestamps();
         });
