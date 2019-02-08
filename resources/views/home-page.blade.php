@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .margin {
-            padding: 70px 0 50px 0;
-        }
-    </style>
+    @include('flash::message')
     <!-- First Container -->
     <div class="container-fluid bg-1 text-center">
         <h3 class="margin">PIZZERIA</h3>

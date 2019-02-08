@@ -3,22 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersTableRequest;
-use App\User;
+use App\Models\User;
 use Hash;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return void
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -27,8 +17,7 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create', [
-            $user = new User(),
-            'user' => $user
+            'user' => new User()
         ]);
     }
 
@@ -44,7 +33,9 @@ class UserController extends Controller
         $params['password'] = Hash::make($request->password);
         $user = User::create($params);
 
-        return redirect(route('home-page'))->with(['success' => 'Your registration has been successful, please login.']);
+        flash('Your registration has been successful, please login.')->success();
+
+        return redirect(route('home'));
     }
 
     /**

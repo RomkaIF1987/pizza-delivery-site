@@ -1,5 +1,7 @@
 @csrf
-<p><span style="font-size: large; padding: 100px">Personal data</span></p>
+<br>
+<br>
+<p class="margin"><h2>Personal data</h2></p>
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Name</label>
     <div class="col-md-4">
@@ -50,7 +52,7 @@
         @endif
     </div>
 </div>
-<p><span style="font-size: large; padding: 100px">Address</span></p>
+<p><h3>Address</h3></p>
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">City</label>
     <div class="col-md-4">
