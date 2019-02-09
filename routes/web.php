@@ -18,3 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 
 Route::resource('pizza', 'PizzaController');
+
+Route::get('add-to-cart/{id}', 'CartController@getAddToCart')->name('addToCart');
+Route::get('cart-show', 'CartController@getCart')->name('cartShow');
+Route::get('cart-confirm', 'CartController@getCartConfirm')->name('cartConfirm');

@@ -22,18 +22,16 @@
     <div class="container-fluid bg-3 text-center" id="pizza">
         <h3 class="margin">Сhoose your pizza</h3><br>
         <div class="row">
-            <div class="col-sm-4">
-                <img src="storage/images/salami.png" class="img-responsive margin" style="width:100%" alt="Image">
-                <p>Salami</p>
-            </div>
-            <div class="col-sm-4">
-                <img src="storage/images/margarita.png" class="img-responsive margin" style="width:100%" alt="Image">
-                <p>Margarita</p>
-            </div>
-            <div class="col-sm-4">
-                <img src="storage/images/caprichosa.png" class="img-responsive margin" style="width:100%" alt="Image">
-                <p>Caprichosa</p>
-            </div>
+            @foreach($pizzas as $pizza)
+                <div class="col-sm-4">
+                    <img src="{{$pizza->getFirstMedia('pizza_images')->getUrl()}}" class="img-responsive margin"
+                         style="width:100%" alt="Image">
+                    <h3>{{$pizza->name}}</h3>
+                    <p>{{$pizza->description}}</p>
+                    <p>{{$pizza->price}}₴</p>
+                    <a href="{{route('addToCart', ['id' => $pizza->id])}}" class="btn btn-primary pull-right">Add to
+                        cart</a>
+                </div>
+            @endforeach
         </div>
-    </div>
 @endsection

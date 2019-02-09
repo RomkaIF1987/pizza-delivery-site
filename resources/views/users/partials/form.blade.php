@@ -1,7 +1,5 @@
 @csrf
-<br>
-<br>
-<p class="margin"><h2>Personal data</h2></p>
+<p><h2>Personal data</h2></p>
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Name</label>
     <div class="col-md-4">

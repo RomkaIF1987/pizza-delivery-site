@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pizza;
+
 class HomeController extends Controller
 {
     /**
@@ -11,6 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home-page');
+        return view('site.index');
+//        return view('home-page',[
+//            'pizzas' => Pizza::all()
+//        ]);
     }
 }

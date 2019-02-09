@@ -43,6 +43,8 @@ class PizzaController extends Controller
         if (request()->hasFile('pizza_image')) {
             $pizza->addMedia(request()->file('pizza_image'))->toMediaCollection('pizza_images');
         }
+
+        return redirect()->route('home');
     }
 
     /**
@@ -53,7 +55,8 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-        //
+        $mediaItems = $pizza->getMedia();
+        dd($mediaItems);
     }
 
     /**
