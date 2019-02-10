@@ -40,12 +40,12 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{route('homeMenu')}}" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="{{route('homeServices')}}" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="{{route('homeBlog')}}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{{route('homeAbout')}}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{{route('homeContact')}}" class="nav-link">Contact</a></li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

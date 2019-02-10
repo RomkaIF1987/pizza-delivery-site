@@ -18,4 +18,35 @@ class HomeController extends Controller
 //            'pizzas' => Pizza::all()
 //        ]);
     }
+
+    public function about()
+    {
+        return view('site.about');
+    }
+
+    public function blog()
+    {
+        return view('site.blog');
+    }
+
+    public function blogSingle()
+    {
+        return view('site.blog-single');
+    }
+
+    public function contact()
+    {
+        return view('site.contact');
+    }
+
+    public function menu()
+    {
+        return view('site.menu');
+    }
+
+    public function services()
+    {
+        return view('site.services');
+    }
 }
+

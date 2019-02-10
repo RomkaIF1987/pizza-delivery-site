@@ -14,6 +14,12 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('about', 'HomeController@about')->name('homeAbout');
+Route::get('blog', 'HomeController@blog')->name('homeBlog');
+Route::get('blog-single', 'HomeController@blogSingle')->name('homeBlogSingle');
+Route::get('contact', 'HomeController@contact')->name('homeContact');
+Route::get('menu', 'HomeController@menu')->name('homeMenu');
+Route::get('services', 'HomeController@services')->name('homeServices');
 
 Route::resource('users', 'UserController');
 
