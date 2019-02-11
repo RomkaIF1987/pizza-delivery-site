@@ -26,18 +26,6 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Size</label>
-    <div class="col-md-4">
-        <input type="text" class="form-control {{$errors->has('size') ? 'is-invalid' : ''}}" id="size" name="size"
-               placeholder="size" value="{{old('size') ?? $pizza->size}}" required autofocus>
-        @if($errors->has('size'))
-            <div class="invalid-feedback">
-                {{$errors->get('size')[0]}}
-            </div>
-        @endif
-    </div>
-</div>
-<div class="form-group row">
     <label class="col-sm-2 col-form-label">Price</label>
     <div class="col-md-4">
         <input type="text" class="form-control {{$errors->has('price') ? 'is-invalid' : ''}}" id="price" name="price"

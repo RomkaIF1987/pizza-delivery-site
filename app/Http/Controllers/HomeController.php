@@ -13,10 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('site.index');
-//        return view('home-page',[
-//            'pizzas' => Pizza::all()
-//        ]);
+        return view('site.index', [
+            'pizzas' => Pizza::all()
+        ]);
     }
 
     public function about()
@@ -41,12 +40,16 @@ class HomeController extends Controller
 
     public function menu()
     {
-        return view('site.menu');
+        return view('site.menu', [
+            'pizzas' => Pizza::all()
+        ]);
     }
 
     public function services()
     {
-        return view('site.services');
+        return view('site.services', [
+            'pizzas' => Pizza::all()
+        ]);
     }
 }
 

@@ -46,6 +46,14 @@
                 <li class="nav-item"><a href="{{route('homeBlog')}}" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="{{route('homeAbout')}}" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="{{route('homeContact')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{route('cartShow')}}" class="nav-link">Shopping Cart <span
+                                class="badge-pill">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                    </a></li>
+                @auth
+                    @if(auth()->user()->role == 'admin')
+                        <li class="nav-item"><a href="#" class="nav-link">Admin Panel</a></li>
+                    @endif
+                @endauth
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -57,7 +65,7 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
@@ -84,7 +92,7 @@
 </nav>
 <!-- END nav -->
 
-    @yield('content')
+@yield('content')
 
 <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>

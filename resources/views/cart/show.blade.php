@@ -1,37 +1,51 @@
 @extends('layouts.app')
 @section('content')
     <br>
-    <br>
-    <br>
     @if(Session::has('cart'))
-        <div class="row">
-            <div class="col-sm-6 col-md-6">
-                <ul class="list-group">
-                    @foreach($products as $product)
-                        <li class="list-group-item">
-                            <span class="badge">{{$product['qty']}}</span>
-                            <strong>{{$product['item']['name']}}</strong>
-                            <span>{{$product['price']}}</span>
+        <div class="table">
+            <table style="width: 60%;">
+                <tr>
+                    <th>Items</th>
+                    <th>Product name</th>
+                    <th>Quantyty</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                @foreach($products as $product)
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$product['item']['name']}}</td>
+                        <td>{{$product['qty']}}</td>
+                        <td>${{$product['price']}}</td>
+                        <td>
                             <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Action
                                 <span class="carret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#"> Reduce by 1 </a></li>
-                                <li><a href="#"> Reduce all</a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{route('reduceByOneCart', ['id' => $product['item']['id']])}}"> Reduce by
+                                        1 </a></li>
+                                <li><a class="dropdown-item"
+                                       href="{{route('removeItemCart', ['id' => $product['item']['id']])}}"> Reduce
+                                        all</a></li>
                             </ul>
-                        </li>
-                    @endforeach
-                </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <strong><h2> Total: ${{$totalPrice}}</h2></strong>
             </div>
         </div>
-        <div class="row">
-            <strong>Total: {{$totalPrice}}</strong>
-        </div>
-        <div class="row">
-            <a href="{{route('cartConfirm')}}" class="btn btn-primary">Confirm</a>
+        <div class="row p-3">
+            <div class="col-md-6">
+                <a href="{{route('cartConfirm')}}" class="btn btn-primary">Confirm</a>
+            </div>
         </div>
     @else
-        <div class="row">
-            <strong>No Items in a Cart</strong>
+        <div class="row ml-5">
+            <h2>No Items in a Cart</h2>
         </div>
     @endif
 @endsection
