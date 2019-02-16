@@ -50,4 +50,16 @@ class Cart
         $this->totalPrice -= $this->items[$id]['price'];
         unset($this->items[$id]);
     }
+
+    public function itemOrders()
+    {
+        foreach ($this->items as $item) {
+
+            $itemOrders[] = ['pizza_id' => $item['item']->id,
+                'quantity' => $item['qty'],
+                'sum' => $item['price']];
+        }
+        return $itemOrders;
+    }
+
 }

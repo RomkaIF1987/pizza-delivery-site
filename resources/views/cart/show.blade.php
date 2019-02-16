@@ -38,11 +38,17 @@
                 <strong><h2> Total: ${{$totalPrice}}</h2></strong>
             </div>
         </div>
-        <div class="row p-3">
-            <div class="col-md-6">
-                <a href="{{route('cartConfirm')}}" class="btn btn-primary">Confirm</a>
-            </div>
-        </div>
+        <form action="{{route('orders.store')}}" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+            <input type="hidden" name="user_name" value="{{$user->name}}">
+            <input type="hidden" name="user_address"
+                   value="{{$user->city.', '.$user->street.', '.$user->house.', '.$user->room }}">
+            <input type="hidden" name="user_phone" value="{{$user->phone}}">
+            <input type="hidden" name="sum" value="{{$totalPrice}}">
+            <input type="hidden" name="itemOrders" value="{{json_encode($itemOrders)}}">
+            <button type="submit" class="btn btn-primary" style="margin-left: 15px">Confirm</button>
+        </form>
     @else
         <div class="row ml-5">
             <h2>No Items in a Cart</h2>

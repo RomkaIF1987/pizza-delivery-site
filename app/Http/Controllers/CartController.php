@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Order;
+use App\Classes\OrderItems;
 use App\Models\Pizza;
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Session;
 
@@ -18,6 +21,7 @@ class CartController extends Controller
         $cart->add($pizza, $pizza->id);
 
         $request->session()->put('cart', $cart);
+        return back();
     }
 
     public function getReduceByOne($id)
@@ -50,20 +54,22 @@ class CartController extends Controller
         if (!Session::has('cart')) {
             return view('cart.show', ['products' => []]);
         }
+        $user = Auth::user();
         $pizza = Pizza::all();
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('cart.show', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'pizza' => $pizza, 'i' => $i = 1]);
+        return view('cart.show', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice,
+            'user' => $user, 'pizza' => $pizza, 'i' => 1, 'itemOrders' => $cart->itemOrders()]);
     }
 
-    public function getCartConfirm()
+    public function getCartConfirm($order_id)
     {
-        if (!Session::has('cart')) {
-            return view('cart.show', ['products' => []]);
-        }
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        $total = $cart->totalPrice;
-        return view('cart.confirm', ['total' => $total]);
+        $user = Auth::user();
+        $orders = Order::find($order_id);
+        $orderItems = OrderItems::find($order_id);
+        $pizzas = Pizza::find($orderItems->pizza_id);
+
+        return view('cart.confirm', ['orders' => $orders, 'i' => 1]);
     }
+
 }

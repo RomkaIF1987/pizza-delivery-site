@@ -27,6 +27,12 @@ Route::resource('pizza', 'PizzaController')->middleware('role:admin');
 
 Route::get('add-to-cart/{id}', 'CartController@getAddToCart')->name('addToCart');
 Route::get('cart-show', 'CartController@getCart')->name('cartShow');
-Route::get('cart-confirm', 'CartController@getCartConfirm')->name('cartConfirm');
+Route::get('cart-confirm/{order}', 'CartController@getCartConfirm')->name('cartConfirm');
 Route::get('reduce/{id}', 'CartController@getReduceByOne')->name('reduceByOneCart');
 Route::get('remove/{id}', 'CartController@getRemoveItem')->name('removeItemCart');
+
+Route::resource('orders', 'OrderController');
+
+Route::get('admin', function () {
+    return view('admin.index');
+});
