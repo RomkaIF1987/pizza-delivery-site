@@ -55,8 +55,7 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-        $mediaItems = $pizza->getMedia();
-        dd($mediaItems);
+        //
     }
 
     /**

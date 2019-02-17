@@ -2,7 +2,8 @@
 @section('content')
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     <div class="container">
         <div class="row">
@@ -67,28 +68,30 @@
                     </div>
                 </div>
             </div>
-            <div class="span2">
-                <div class="btn-group">
-                    <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                        Action
-                        <span class="icon-cog icon-white"></span>
+        </div>
+        <div class="span2">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Action
+                    <span class="icon-cog icon-white"></span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}"><span
+                                class="icon-wrench"></span>
+                        Modify</a>
+                    <a class="dropdown-item" type="submit" href="javascript:void(0);"
+                       onclick="$(this).find('form').submit();"><span
+                                class="icon-trash"></span> Delete
+                        <form action="{{route('users.destroy', ['user' => $user->id])}}"
+                              method="POST"
+                              style="display: inline">
+                            @csrf
+                            @method('delete')
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}"><span
-                                        class="icon-wrench"></span>
-                                Modify</a></li>
-                        <li><a class="dropdown-item" type="submit" href="javascript:void(0);"
-                               onclick="$(this).find('form').submit();"><span
-                                        class="icon-trash"></span> Delete
-                                <form action="{{route('users.destroy', ['user' => $user->id])}}"
-                                      method="POST"
-                                      style="display: inline">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="_method" value="DELETE">
-                                </form>
-                            </a></li>
-                    </ul>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

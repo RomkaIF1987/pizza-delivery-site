@@ -33,6 +33,5 @@ Route::get('remove/{id}', 'CartController@getRemoveItem')->name('removeItemCart'
 
 Route::resource('orders', 'OrderController');
 
-Route::get('admin', function () {
-    return view('admin.index');
-});
+Route::get('admin', 'AdminController@index')->name('adminPanelIndex')->middleware('role:admin');;
+Route::get('/adminEditUser/{user}', 'AdminController@userEdit')->name('adminEditUser')->middleware('role:admin');;

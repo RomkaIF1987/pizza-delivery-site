@@ -48,6 +48,7 @@ class UsersTableRequest extends FormRequest
                         'street' => 'nullable|string|max:255',
                         'house' => 'nullable|string|max:255',
                         'room' => 'nullable|string|max:255',
+                        'role' => 'nullable|string|max:255',
                     ];
                 }
             default:

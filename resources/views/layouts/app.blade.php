@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../css/animate.css">
@@ -51,7 +53,8 @@
                     </a></li>
                 @auth
                     @if(auth()->user()->role == 'admin')
-                        <li class="nav-item"><a href="#" class="nav-link">Admin Panel</a></li>
+                        <li class="nav-item"><a href="{{route('adminPanelIndex')}}" class="nav-link">Admin Panel</a>
+                        </li>
                     @endif
                 @endauth
                 @guest
@@ -204,6 +207,18 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
-
+<script src="../jquery/jquery.min.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../jquery-easing/jquery.easing.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../chart.js/Chart.min.js"></script>
+<script src="../datatables/jquery.dataTables.js"></script>
+<script src="../datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin.min.js"></script>
+<!-- Demo scripts for this page-->
+<script src="../js/demo/datatables-demo.js"></script>
+<script src="../js/demo/chart-area-demo.js"></script>
 </body>
 </html>

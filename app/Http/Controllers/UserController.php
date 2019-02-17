@@ -74,7 +74,7 @@ class UserController extends Controller
         $params = $request->validated();
         $user->update($params);
 
-        return redirect()->route('home-page');
+        return redirect()->route('home');
     }
 
     /**
@@ -88,6 +88,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('home-page');
+        return redirect()->route('home');
     }
 }
