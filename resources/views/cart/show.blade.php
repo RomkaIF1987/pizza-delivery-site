@@ -17,17 +17,17 @@
                         <td>{{$product['item']['name']}}</td>
                         <td>{{$product['qty']}}</td>
                         <td>${{$product['price']}}</td>
-                        <td>
-                            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Action
+                        <td class="dropdown">
+                            <button type="button" class="btn btn-dark dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action
                                 <span class="carret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item"
                                        href="{{route('reduceByOneCart', ['id' => $product['item']['id']])}}"> Reduce by
-                                        1 </a></li>
-                                <li><a class="dropdown-item"
+                                        1 </a>
+                                <a class="dropdown-item"
                                        href="{{route('removeItemCart', ['id' => $product['item']['id']])}}"> Reduce
-                                        all</a></li>
-                            </ul>
+                                        all</a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

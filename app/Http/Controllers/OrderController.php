@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Classes\OrderItems;
 use App\Classes\Order;
+use App\Mail\OrderConfirmation;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Mail;
 use Session;
 
 class OrderController extends Controller
@@ -34,10 +37,10 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param $totalPrice
+     * @param User $user
      * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
 
         $orderParams = $request->validate([
@@ -61,6 +64,9 @@ class OrderController extends Controller
             OrderItems::create($orderItemsParam);
         }
         Session::forget('cart');
+
+        Mail::to(Auth::user()->email)->send(
+            new OrderConfirmation($order));
 
         return redirect()->route('cartConfirm', ['order_id' => $order->id]);
     }
