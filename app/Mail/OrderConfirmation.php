@@ -30,7 +30,6 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        $i = 1;
-        return $this->markdown('mail.orderConfirmation', ['i' => $i]);
+        return $this->markdown('mail.orderConfirmation', ['i' => 1]);
     }
 }

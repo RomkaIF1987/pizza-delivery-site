@@ -5,17 +5,17 @@
 <div class="table">
 <table style="width: 60%;">
 <tr>
-<th>Items</th>
-<th>Product name</th>
-<th>Quantity</th>
-<th>Price</th>
+<th class="text-center">Items</th>
+<th class="text-center">Product name</th>
+<th class="text-center">Quantity</th>
+<th class="text-center">Price</th>
 </tr>
 @foreach($order->orderItems as $orderItem)
 <tr>
-<td>{{$i++}}</td>
-<td>{{$orderItem->pizza->name}}</td>
-<td>{{$orderItem->quantity}}</td>
-<td>${{$orderItem->sum}}</td>
+<td class="text-center">{{$i++}}</td>
+<td class="text-center">{{$orderItem->pizza->name}}</td>
+<td class="text-center">{{$orderItem->quantity}}</td>
+<td class="text-center">${{$orderItem->sum}}</td>
 </tr>
 @endforeach
 </table>
