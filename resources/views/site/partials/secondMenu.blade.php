@@ -31,53 +31,25 @@
                                 <div class="row">
                                     @foreach($pizzas as $i => $pizza)
                                         @if($i>=3)
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url({{$pizza->getFirstMedia('pizza_images')->getUrl()}});"></a>
-                                            <div class="text">
-                                                <h3><a href="#">{{$pizza->name}}</a></h3>
-                                                <p>{{$pizza->description}}</p>
-                                                <p class="price"><span>${{$pizza->price}}</span></p>
-                                                <p><a href="{{route('addToCart', ['id' => $pizza->id ])}}"
-                                                      class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
+                                            <div class="col-md-4 text-center">
+                                                <div class="menu-wrap">
+                                                    <a href="#" class="menu-img img mb-4"
+                                                       style="background-image: url({{$pizza->getFirstMedia('pizza_images')->getUrl()}});"></a>
+                                                    <div class="text">
+                                                        <h3><a href="#">{{$pizza->name}}</a></h3>
+                                                        <p>{{$pizza->description}}</p>
+                                                        <p class="price"><span>${{$pizza->price}}</span></p>
+                                                        @auth
+                                                            <p><a href="{{route('addToCart', ['id' => $pizza->id ])}}"
+                                                                  class="btn btn-white btn-outline-white">Add to
+                                                                    cart</a>
+                                                            </p>
+                                                        @endauth
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
                                         @endif
                                     @endforeach
-                                    {{--<div class="col-md-4 text-center">--}}
-                                    {{--<div class="menu-wrap">--}}
-                                    {{--<a href="#" class="menu-img img mb-4"--}}
-                                    {{--style="background-image: url(storage/images/pizza-2.jpg);"></a>--}}
-                                    {{--<div class="text">--}}
-                                    {{--<h3><a href="#">Itallian Pizza</a></h3>--}}
-                                    {{--<p>Far far away, behind the word mountains, far from the countries--}}
-                                    {{--Vokalia and Consonantia.</p>--}}
-                                    {{--<p class="price"><span>$2.90</span></p>--}}
-                                    {{--<p><a href="#" class="btn btn-white btn-outline-white">Add to--}}
-                                    {{--cart</a>--}}
-                                    {{--</p>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-4 text-center">--}}
-                                    {{--<div class="menu-wrap">--}}
-                                    {{--<a href="#" class="menu-img img mb-4"--}}
-                                    {{--style="background-image: url(storage/images/pizza-3.jpg);"></a>--}}
-                                    {{--<div class="text">--}}
-                                    {{--<h3><a href="#">Itallian Pizza</a></h3>--}}
-                                    {{--<p>Far far away, behind the word mountains, far from the countries--}}
-                                    {{--Vokalia and Consonantia.</p>--}}
-                                    {{--<p class="price"><span>$2.90</span></p>--}}
-                                    {{--<p><a href="#" class="btn btn-white btn-outline-white">Add to--}}
-                                    {{--cart</a>--}}
-                                    {{--</p>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--</div>--}}
                                 </div>
                             </div>
 

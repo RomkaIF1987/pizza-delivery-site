@@ -24,11 +24,11 @@ class OrderTableRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'nullable|exists:users',
-            'user_name' => 'required|max:255',
-            'user_phone' => 'required|integer|max:10',
+            'user_id' => 'required',
+            'user_name' => 'required',
+            'user_phone' => 'required',
             'user_address' => 'required',
-            'sum' => 'required|integer',
+            'sum' => 'required',
             'itemOrders' => 'required'
         ];
     }

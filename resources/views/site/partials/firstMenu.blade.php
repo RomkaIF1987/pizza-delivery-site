@@ -20,8 +20,10 @@
                             <h3>{{$pizza->name}}</h3>
                             <p>{{$pizza->description}}</p>
                             <p class="price"><span>${{$pizza->price}}</span>
-                                <a href="{{route('addToCart', ['id' => $pizza->id])}}"
-                                   class="ml-2 btn btn-white btn-outline-white">Order</a>
+                                @auth
+                                    <a href="{{route('addToCart', ['id' => $pizza->id])}}"
+                                       class="ml-2 btn btn-white btn-outline-white">Order</a>
+                                @endauth
                             </p>
                         </div>
                     </div>
@@ -54,9 +56,9 @@
                             <div class="d-block">
                                 <p>{{$pizza->description}}</p>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

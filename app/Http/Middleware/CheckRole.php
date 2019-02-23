@@ -13,26 +13,21 @@ class CheckRole
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param array $roles
+     * @param $roles
      * @return mixed
      */
     public function handle($request, Closure $next, ... $roles)
     {
-        if (!Auth::check()){
+        if (!Auth::check()) {
             return redirect('login');
         }
 
-        $user = Auth::user();
-
-        if ($user->isAdmin()) {
-            return $next($request);
-        }
-        foreach ($roles as $role) {
-
-            if ($user->hasRole($role))
+        foreach ($roles as $role)
+        {
+            if ($role == Auth::user()->role) {
                 return $next($request);
+            }
         }
-
-        return redirect('login');
+        return redirect('/');
     }
 }

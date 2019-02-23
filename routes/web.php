@@ -23,7 +23,7 @@ Route::get('services', 'HomeController@services')->name('homeServices');
 
 Route::resource('users', 'UserController');
 
-Route::resource('pizza', 'PizzaController')->middleware('role:admin');
+Route::resource('pizza', 'PizzaController')->middleware('role:admin,buyer');
 
 Route::get('add-to-cart/{id}', 'CartController@getAddToCart')->name('addToCart');
 Route::get('cart-show', 'CartController@getCart')->name('cartShow');
@@ -34,4 +34,6 @@ Route::get('remove/{id}', 'CartController@getRemoveItem')->name('removeItemCart'
 Route::resource('orders', 'OrderController');
 
 Route::get('admin', 'AdminController@index')->name('adminPanelIndex')->middleware('role:admin');;
-Route::get('/adminEditUser/{user}', 'AdminController@userEdit')->name('adminEditUser')->middleware('role:admin');;
+Route::get('/adminEditUser/{user}', 'AdminController@userEdit')->name('adminEditUser')->middleware('role:admin');
+
+Route::resource('manager', 'ManagerController');

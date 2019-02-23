@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\OrderItems;
 use App\Classes\Order;
+use App\Http\Requests\OrderTableRequest;
 use App\Mail\OrderConfirmation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -36,25 +37,17 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param User $user
+     * @param OrderTableRequest $request
      * @return void
      */
-    public function store(Request $request, User $user)
+    public function store(OrderTableRequest $request)
     {
 
-        $orderParams = $request->validate([
-            'user_id' => 'required',
-            'user_name' => 'required',
-            'user_phone' => 'required',
-            'user_address' => 'required',
-            'sum' => 'required'
-        ]);
+        $params = $request->validated();
+        $orderItemsParams['itemOrders'] = $params['itemOrders'];
+        unset($params['itemOrders']);
 
-        $order = Order::create($orderParams);
-
-        $orderItemsParams = $request->validate([
-            'itemOrders' => 'required']);
+        $order = Order::create($params);
 
         $orderItemsParams = json_decode($orderItemsParams['itemOrders'], true);
 

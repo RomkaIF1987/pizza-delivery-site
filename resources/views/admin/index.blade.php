@@ -200,7 +200,7 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table"></i>
-                        Data Table Example
+                        Users Table
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -215,7 +215,6 @@
                                     <th class="text-center">House</th>
                                     <th class="text-center">Room</th>
                                     <th class="text-center">Role</th>
-                                    <th class="text-center">Logo</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                                 </thead>
@@ -229,7 +228,6 @@
                                     <th class="text-center">House</th>
                                     <th class="text-center">Room</th>
                                     <th class="text-center">Role</th>
-                                    <th class="text-center">Logo</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                                 </tfoot>
@@ -244,14 +242,12 @@
                                         <td>{{$user->house}}</td>
                                         <td>{{$user->room}}</td>
                                         <td>{{$user->role}}</td>
-                                        <td>{{$user->logo}}</td>
                                         <td><a class="edit-modal btn btn-info"
                                                href="{{route('adminEditUser', ['user' => $user->id])}}">
                                                 <span class="glyphicon glyphicon-edit"></span> Edit
                                             </a>
                                             <form action="{{route('users.destroy', ['user' => $user->id])}}"
-                                                  method="POST"
-                                                  style="display: inline">
+                                                  method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <input type="hidden" name="_method" value="DELETE">
