@@ -67,12 +67,15 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order $order
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        return view('manager.show', [
+            'orders' => Order::find($id),
+            'i' => 1
+        ]);
     }
 
     /**
@@ -107,5 +110,17 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function orderCompleted(Order $order)
+    {
+        $order->complete();
+        return back();
+    }
+
+    public function orderIncompleted(Order $order)
+    {
+        $order->incomplete();
+        return back();
     }
 }

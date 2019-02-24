@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pizza - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Pizza Delicous</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,25 +10,19 @@
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-
-    <link rel="stylesheet" href="../css/aos.css">
-
-    <link rel="stylesheet" href="../css/ionicons.min.css">
-
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/icomoon.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -48,12 +42,16 @@
                 <li class="nav-item"><a href="{{route('homeBlog')}}" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="{{route('homeAbout')}}" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="{{route('homeContact')}}" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="{{route('cartShow')}}" class="nav-link">Shopping Cart <span
-                                class="badge-pill">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
-                    </a></li>
                 @auth
+                    <li class="nav-item"><a href="{{route('cartShow')}}" class="nav-link">Shopping Cart <span
+                                    class="badge-pill">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                        </a></li>
                     @if(auth()->user()->role == 'admin')
                         <li class="nav-item"><a href="{{route('adminPanelIndex')}}" class="nav-link">Admin Panel</a>
+                        </li>
+                    @endif
+                    @if(auth()->user()->role == 'manager')
+                        <li class="nav-item"><a href="{{route('manager.index')}}" class="nav-link">Orders</a>
                         </li>
                     @endif
                 @endauth
@@ -68,18 +66,18 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <a class="dropdown-item" href="{{ route('users.show', ['id' => auth()->user()->id]) }}">
+                            <a class="dropdown-item" aria-labelledby="navbarDropdown"
+                               href="{{ route('users.show', ['id' => auth()->user()->id]) }}">
                                 {{ __('Profile') }}
                             </a>
 
@@ -117,7 +115,7 @@
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Recent Blog</h2>
                     <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(storage/images/image_1.jpg);"></a>
+                        <a class="blog-img mr-4" style="background-image: url(/storage/images/image_1.jpg);"></a>
                         <div class="text">
                             <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                             <div class="meta">
@@ -128,7 +126,7 @@
                         </div>
                     </div>
                     <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(storage/images/image_2.jpg);"></a>
+                        <a class="blog-img mr-4" style="background-image: url(/storage/images/image_2.jpg);"></a>
                         <div class="text">
                             <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                             <div class="meta">
@@ -190,33 +188,29 @@
 </div>
 
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--}}
-<script src="../js/jquery.easing.1.3.js"></script>
-<script src="../js/jquery.waypoints.min.js"></script>
-<script src="../js/jquery.stellar.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/jquery.magnific-popup.min.js"></script>
-<script src="../js/aos.js"></script>
-<script src="../js/jquery.animateNumber.min.js"></script>
-<script src="../js/bootstrap-datepicker.js"></script>
-<script src="../js/jquery.timepicker.min.js"></script>
-<script src="../js/scrollax.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/jquery.animateNumber.min.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/jquery.timepicker.min.js"></script>
+<script src="/js/scrollax.min.js"></script>
 {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>--}}
 {{--<script src="../js/google-map.js"></script>--}}
-<script src="../js/main.js"></script>
-{{--<script src="../jquery/jquery.min.js"></script>--}}
-<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../jquery-easing/jquery.easing.min.js"></script>
-{{--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>--}}
+<script src="/js/main.js"></script>
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="../datatables/jquery.dataTables.js"></script>
-<script src="../datatables/dataTables.bootstrap4.js"></script>
+<script src="/datatables/jquery.dataTables.js"></script>
+<script src="/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="../js/sb-admin.min.js"></script>
+<script src="/js/sb-admin.min.js"></script>
 <!-- Demo scripts for this page-->
-<script src="../js/demo/datatables-demo.js"></script>
+<script src="/js/demo/datatables-demo.js"></script>
 </body>
 </html>

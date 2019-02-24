@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <br>
-    <br>
-    <br>
     <h2>Add new pizza</h2>
     <form action="{{route('pizza.store')}}" method="POST" enctype='multipart/form-data' style="margin-left: 40px">
         @include('pizza.partials.form')

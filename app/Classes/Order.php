@@ -18,4 +18,14 @@ class Order extends Model
     {
         return $this->hasMany(OrderItems::class);
     }
+
+    public function complete()
+    {
+        return $this->update(['orders_completed' => true]);
+    }
+
+    public function incomplete()
+    {
+        return $this->update(['orders_completed' => false]);
+    }
 }

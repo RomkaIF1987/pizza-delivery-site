@@ -15,40 +15,20 @@ class ManagerController extends Controller
     public function index()
     {
         return view('manager.index', [
-            'orders' => Order::all()
+            'orders' => Order::all()->where('orders_completed', false)
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function completeOrder()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('manager.index-complete', [
+            'orders' => Order::all()->where('orders_completed', true)
+        ]);
     }
 
     /**
