@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/lightbox.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -51,7 +52,8 @@
                         </li>
                     @endif
                     @if(auth()->user()->role == 'manager')
-                        <li class="nav-item"><a href="{{route('manager.index')}}" class="nav-link">Orders</a>
+                        <li class="nav-item"><a href="{{route('manager.index')}}" class="nav-link">Orders
+                                <span class="badge badge-light">{{DB::table('orders')->where('orders_completed', false)->count()}}</span></a>
                         </li>
                     @endif
                 @endauth
@@ -187,7 +189,6 @@
     </svg>
 </div>
 
-
 <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="/js/jquery.easing.1.3.js"></script>
@@ -212,5 +213,12 @@
 <script src="/js/sb-admin.min.js"></script>
 <!-- Demo scripts for this page-->
 <script src="/js/demo/datatables-demo.js"></script>
+<script src="/js/lightbox.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    })
+</script>
 </body>
 </html>

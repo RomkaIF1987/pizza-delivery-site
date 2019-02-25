@@ -2,23 +2,19 @@
 @section('content')
 
     <section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
-
         <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center">
-
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-3 mt-5 bread">Read our Blog</h1>
                         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span
                                     class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section ftco-degree-bg">
         <div class="container">
@@ -71,7 +67,6 @@
                             <a href="#" class="tag-cloud-link">Travel</a>
                         </div>
                     </div>
-
                     <div class="about-author d-flex">
                         <div class="bio align-self-md-center mr-5">
                             <img src="images/person_4.jpg" alt="Image placeholder" class="img-fluid mb-4">
@@ -83,8 +78,6 @@
                                 sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
                         </div>
                     </div>
-
-
                     <div class="pt-5 mt-5">
                         <h3 class="mb-5">6 Comments</h3>
                         <ul class="comment-list">
@@ -114,7 +107,6 @@
                                         sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
                                     <p><a href="#" class="reply">Reply</a></p>
                                 </div>
-
                                 <ul class="children">
                                     <li class="comment">
                                         <div class="vcard bio">
@@ -129,8 +121,6 @@
                                                 necessitatibus, nihil?</p>
                                             <p><a href="#" class="reply">Reply</a></p>
                                         </div>
-
-
                                         <ul class="children">
                                             <li class="comment">
                                                 <div class="vcard bio">
@@ -208,11 +198,9 @@
                                 <div class="form-group">
                                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
                                 </div>
-
                             </form>
                         </div>
                     </div>
-
                 </div> <!-- .col-md-8 -->
                 <div class="col-md-4 sidebar ftco-animate">
                     <div class="sidebar-box">
@@ -236,7 +224,6 @@
                             <li><a href="#">Travel <span>(140)</span></a></li>
                         </div>
                     </div>
-
                     <div class="sidebar-box ftco-animate">
                         <h3>Recent Blog</h3>
                         <div class="block-21 mb-4 d-flex">

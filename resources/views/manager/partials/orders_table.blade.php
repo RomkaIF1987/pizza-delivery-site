@@ -25,11 +25,11 @@
             @foreach($orders as $order)
                 <tr>
                     <td><a href="{{route('orders.show', ['id' => $order->id])}}">{{$order->id}}</a></td>
-                    <td><a href="#">{{$order->user_name}}</a></td>
-                    <td><a href="#">{{$order->user_phone}}</a></td>
-                    <td><a href="#">{{$order->user_address}}</a></td>
-                    <td><a href="#">${{$order->sum}}</a></td>
-                    <td class="text-center">
+                    <td><a href="{{route('orders.show', ['id' => $order->id])}}">{{$order->user_name}}</a></td>
+                    <td><a href="{{route('orders.show', ['id' => $order->id])}}">{{$order->user_phone}}</a></td>
+                    <td><a href="{{route('orders.show', ['id' => $order->id])}}">{{$order->user_address}}</a></td>
+                    <td><a href="{{route('orders.show', ['id' => $order->id])}}">${{$order->sum}}</a></td>
+                    <td>
                         <form action="/completed-order/{{$order->id}}" method="POST">
                             @csrf
                             @if($order->orders_completed)

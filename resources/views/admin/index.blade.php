@@ -264,8 +264,8 @@
                     </div>
                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                 </div>
-
             </div>
+        @include('manager.partials.orders_table')
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
