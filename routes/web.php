@@ -37,6 +37,8 @@ Route::delete('completed-order/{order}', 'OrderController@orderIncompleted')->na
 
 Route::get('admin', 'AdminController@index')->name('adminPanelIndex')->middleware('role:admin');;
 Route::get('/adminEditUser/{user}', 'AdminController@userEdit')->name('adminEditUser')->middleware('role:admin');
+Route::get('admin/charts', 'AdminController@charts')->name('adminPanelCharts')->middleware('role:admin');;
+
 
 Route::resource('manager', 'ManagerController')->middleware('role:admin,manager');
 Route::get('manager-complete', 'ManagerController@completeOrder')->name('manager.complete')->middleware('role:admin,manager');

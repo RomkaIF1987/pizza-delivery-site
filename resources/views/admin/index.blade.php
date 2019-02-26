@@ -11,68 +11,14 @@
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
 
-
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-        <a class="navbar-brand mr-1" href="index.html">Admin Panel</a>
-
-        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-            <i class="fas fa-bars"></i>
-        </button>
-
-    <!-- Navbar -->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger">9+</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
-                    <span class="badge badge-danger">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                </div>
-            </li>
-        </ul>
-
-    </nav>
-
     <div id="wrapper">
 
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{route('adminPanelIndex')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>Tables</span>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -93,7 +39,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.blade.php">
+                <a class="nav-link" href="{{route('adminPanelCharts')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
@@ -108,94 +54,27 @@
 
             <div class="container-fluid">
 
-                <!-- Breadcrumbs-->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">Overview</li>
-                </ol>
-
                 <!-- Icon Cards-->
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-primary o-hidden h-100">
-                            <div class="card-body">
-                                <div class="card-body-icon">
-                                    <i class="fas fa-fw fa-comments"></i>
-                                </div>
-                                <div class="mr-5">26 New Messages!</div>
-                            </div>
-                            <a class="card-footer text-white clearfix small z-1" href="#">
-                                <span class="float-left">View Details</span>
-                                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                            </a>
+                        <div class="card text-white o-hidden h-100">
+                            <a href="{{route('pizza.create')}}" class="btn btn-primary m-1"> Add new pizza</a>
+                            <a href="{{route('users.create')}}" class="btn btn-primary m-1"> Add user</a>
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-warning o-hidden h-100">
-                            <div class="card-body">
-                                <div class="card-body-icon">
-                                    <i class="fas fa-fw fa-list"></i>
-                                </div>
-                                <div class="mr-5">11 New Tasks!</div>
-                            </div>
-                            <a class="card-footer text-white clearfix small z-1" href="#">
-                                <span class="float-left">View Details</span>
-                                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-success o-hidden h-100">
-                            <div class="card-body">
-                                <div class="card-body-icon">
-                                    <i class="fas fa-fw fa-shopping-cart"></i>
-                                </div>
-                                <div class="mr-5">123 New Orders!</div>
-                            </div>
-                            <a class="card-footer text-white clearfix small z-1" href="#">
-                                <span class="float-left">View Details</span>
-                                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-danger o-hidden h-100">
-                            <div class="card-body">
-                                <div class="card-body-icon">
-                                    <i class="fas fa-fw fa-life-ring"></i>
-                                </div>
-                                <div class="mr-5">13 New Tickets!</div>
-                            </div>
-                            <a class="card-footer text-white clearfix small z-1" href="#">
-                                <span class="float-left">View Details</span>
-                                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                            </a>
+                        <div class="card text-white o-hidden h-100">
+                            <a href="{{route('pizza.create')}}" class="btn btn-primary m-1"> Add user</a>
+                            <a href="{{route('pizza.create')}}" class="btn btn-primary m-1"> Add user</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Area Chart Example-->
-                {{--<div class="card mb-3">--}}
-                    {{--<div class="card-header">--}}
-                        {{--<i class="fas fa-chart-area"></i>--}}
-                        {{--Area Chart Example--}}
-                    {{--</div>--}}
-                    {{--<div class="card-body">--}}
-                        {{--<canvas id="myAreaChart" width="100%" height="30"></canvas>--}}
-                    {{--</div>--}}
-                    {{--<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>--}}
-                {{--</div>--}}
-
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Tables</a>
+                    </li>
+                </ol>
                 <!-- DataTables Example -->
                 <div class="card mb-3">
                     <div class="card-header">
@@ -204,68 +83,24 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Phone</th>
-                                    <th class="text-center">City</th>
-                                    <th class="text-center">Street</th>
-                                    <th class="text-center">House</th>
-                                    <th class="text-center">Room</th>
-                                    <th class="text-center">Role</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Phone</th>
-                                    <th class="text-center">City</th>
-                                    <th class="text-center">Street</th>
-                                    <th class="text-center">House</th>
-                                    <th class="text-center">Room</th>
-                                    <th class="text-center">Role</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                @foreach($users as $user)
-                                    <tr>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->city}}</td>
-                                        <td>{{$user->street}}</td>
-                                        <td>{{$user->house}}</td>
-                                        <td>{{$user->room}}</td>
-                                        <td>{{$user->role}}</td>
-                                        <td><a class="edit-modal btn btn-info"
-                                               href="{{route('adminEditUser', ['user' => $user->id])}}">
-                                                <span class="glyphicon glyphicon-edit"></span> Edit
-                                            </a>
-                                            <form action="{{route('users.destroy', ['user' => $user->id])}}"
-                                                  method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button class="delete-modal btn btn-danger">
-                                                    <span class="glyphicon glyphicon-trash"></span> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            @include('users.partials.users_table')
                         </div>
                     </div>
                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                 </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Orders Table
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            @include('manager.partials.orders_table')
+                        </div>
+                    </div>
+                </div>
             </div>
-        @include('manager.partials.orders_table')
+
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->

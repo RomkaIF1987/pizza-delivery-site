@@ -21,4 +21,11 @@ class AdminController extends Controller
             'user' => $user
         ]);
     }
+    public function charts()
+    {
+        return view('admin.charts', [
+            'users' => User::all(),
+            'orders' => Order::all()
+        ]);
+    }
 }
