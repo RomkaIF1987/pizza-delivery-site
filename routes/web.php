@@ -23,7 +23,7 @@ Route::get('services', 'HomeController@services')->name('homeServices');
 
 Route::resource('users', 'UserController');
 
-Route::resource('pizza', 'PizzaController')->middleware('role:admin,buyer');
+Route::resource('pizza', 'PizzaController')->middleware('role:admin');
 
 Route::get('add-to-cart/{id}', 'CartController@getAddToCart')->name('addToCart');
 Route::get('cart-show', 'CartController@getCart')->name('cartShow');
@@ -42,4 +42,6 @@ Route::get('admin/charts', 'AdminController@charts')->name('adminPanelCharts')->
 
 Route::resource('manager', 'ManagerController')->middleware('role:admin,manager');
 Route::get('manager-complete', 'ManagerController@completeOrder')->name('manager.complete')->middleware('role:admin,manager');
+
+Route::resource('galleries', 'GalleryController')->middleware('role:admin');
 

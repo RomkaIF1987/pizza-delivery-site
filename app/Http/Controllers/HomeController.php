@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Pizza;
 
 class HomeController extends Controller
@@ -14,7 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('site.index', [
-            'pizzas' => Pizza::all()
+            'pizzas' => Pizza::all(),
+            'galleries' => Gallery::all()
         ]);
     }
 

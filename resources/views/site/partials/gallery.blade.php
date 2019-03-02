@@ -1,42 +1,17 @@
 <section class="ftco-gallery">
     <div class="container-wrap">
         <div class="row no-gutters">
-            <div class="col-md-3 ftco-animate">
-                <a href="/storage/images/gallery-1.jpg" class="gallery img d-flex align-items-center"
-                   data-lightbox="image-1" data-title="Pizzeria"
-                   style="background-image: url(storage/images/gallery-1.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="/storage/images/gallery-2.jpg" class="gallery img d-flex align-items-center"
-                   data-lightbox="image-1" data-title="Pizzeria"
-                   style="background-image: url(storage/images/gallery-2.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="/storage/images/gallery-3.jpg" class="gallery img d-flex align-items-center"
-                   data-lightbox="image-1" data-title="Pizzeria"
-                   style="background-image: url(storage/images/gallery-3.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="/storage/images/gallery-4.jpg" class="gallery img d-flex align-items-center"
-                   data-lightbox="image-1" data-title="Pizzeria"
-                   style="background-image: url(storage/images/gallery-4.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
+            @foreach($galleries as $gallery)
+                <div class="col-md-3 ftco-animate">
+                    <a href="{{$gallery->getFirstMedia('gallery_images')->getUrl()}}" class="gallery img d-flex align-items-center"
+                       data-lightbox="image-1" data-title="{{$gallery->name}}"
+                       style="background-image: url({{$gallery->getFirstMedia('gallery_images')->getUrl()}});">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
