@@ -14,9 +14,9 @@
             @foreach($pizzas as $pizza)
                 <div class="col-lg-4 d-flex ftco-animate">
                     <div class="services-wrap d-flex">
-                        <a href="{{$pizza->getFirstMedia('pizza_images')->getUrl()}}" class="img"
+                        <a href="{{$pizza->getFirstMedia('pizza')->getUrl()}}" class="img"
                            data-lightbox="roadtrip" data-title="{{$pizza->name}}"
-                           style="background-image: url({{$pizza->getFirstMedia('pizza_images')->getUrl()}});"></a>
+                           style="background-image: url({{$pizza->getFirstMedia('pizza')->getUrl()}});"></a>
                         <div class="text p-4">
                             <h3>{{$pizza->name}}</h3>
                             <p>{{$pizza->description}}</p>
@@ -48,7 +48,7 @@
                 <div class="col-md-6">
                     <div class="pricing-entry d-flex ftco-animate">
                         <div class="img"
-                             style="background-image: url({{$pizza->getFirstMedia('pizza_images')->getUrl()}});"></div>
+                             style="background-image: url({{$pizza->getFirstMedia('pizza')->getUrl()}});"></div>
                         <div class="desc pl-3">
                             <div class="d-flex text align-items-center">
                                 <h3><span>{{$pizza->name}}</span></h3>

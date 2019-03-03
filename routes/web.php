@@ -23,7 +23,7 @@ Route::get('services', 'HomeController@services')->name('homeServices');
 
 Route::resource('users', 'UserController');
 
-Route::resource('pizza', 'PizzaController')->middleware('role:admin');
+Route::resource('menu-items', 'MenuItemController')->middleware('role:admin');
 
 Route::get('add-to-cart/{id}', 'CartController@getAddToCart')->name('addToCart');
 Route::get('cart-show', 'CartController@getCart')->name('cartShow');

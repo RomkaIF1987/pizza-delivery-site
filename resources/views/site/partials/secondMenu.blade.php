@@ -29,26 +29,24 @@
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-1-tab">
                                 <div class="row">
-                                    @foreach($pizzas as $i => $pizza)
-                                        @if($i>=3)
-                                            <div class="col-md-4 text-center">
-                                                <div class="menu-wrap">
-                                                    <a href="#" class="menu-img img mb-4"
-                                                       style="background-image: url({{$pizza->getFirstMedia('pizza_images')->getUrl()}});"></a>
-                                                    <div class="text">
-                                                        <h3><a href="#">{{$pizza->name}}</a></h3>
-                                                        <p>{{$pizza->description}}</p>
-                                                        <p class="price"><span>${{$pizza->price}}</span></p>
-                                                        @auth
-                                                            <p><a href="{{route('addToCart', ['id' => $pizza->id ])}}"
-                                                                  class="btn btn-white btn-outline-white">Add to
-                                                                    cart</a>
-                                                            </p>
-                                                        @endauth
-                                                    </div>
+                                    @foreach($pizzas->take(3) as $pizza)
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <div class="menu-img img mb-4"
+                                                     style="background-image: url({{$pizza->getFirstMedia('pizza')->getUrl()}});"></div>
+                                                <div class="text">
+                                                    <h3>{{$pizza->name}}</h3>
+                                                    <p>{{$pizza->description}}</p>
+                                                    <p class="price"><span>${{$pizza->price}}</span></p>
+                                                    @auth
+                                                        <p><a href="{{route('addToCart', ['id' => $pizza->id ])}}"
+                                                              class="btn btn-white btn-outline-white">Add to
+                                                                cart</a>
+                                                        </p>
+                                                    @endauth
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -56,153 +54,76 @@
                             <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
                                  aria-labelledby="v-pills-2-tab">
                                 <div class="row">
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/drink-1.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Lemonade Juice</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
+                                    @foreach($drinks->take(3) as $drink)
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <div class="menu-img img mb-4"
+                                                     style="background-image: url({{$drink->getFirstMedia('drinks')->getUrl()}});"></div>
+                                                <div class="text">
+                                                    <h3>{{$drink->name}}</h3>
+                                                    <p>{{$drink->description}}</p>
+                                                    <p class="price"><span>${{$drink->price}}</span></p>
+                                                    @auth
+                                                        <p><a href="{{route('addToCart', ['id' => $drink->id ])}}"
+                                                              class="btn btn-white btn-outline-white">Add to
+                                                                cart</a>
+                                                        </p>
+                                                    @endauth
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/drink-2.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Pineapple Juice</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/drink-3.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Soda Drinks</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-3" role="tabpanel"
                                  aria-labelledby="v-pills-3-tab">
                                 <div class="row">
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/burger-1.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
+                                    @foreach($burgers->take(3) as $burger)
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <div class="menu-img img mb-4"
+                                                     style="background-image: url({{$burger->getFirstMedia('burgers')->getUrl()}});"></div>
+                                                <div class="text">
+                                                    <h3>{{$burger->name}}</h3>
+                                                    <p>{{$burger->description}}</p>
+                                                    <p class="price"><span>${{$burger->price}}</span></p>
+                                                    @auth
+                                                        <p><a href="{{route('addToCart', ['id' => $burger->id ])}}"
+                                                              class="btn btn-white btn-outline-white">Add to
+                                                                cart</a>
+                                                        </p>
+                                                    @endauth
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/burger-2.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/burger-3.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-4" role="tabpanel"
                                  aria-labelledby="v-pills-4-tab">
                                 <div class="row">
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/pasta-1.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
+                                    @foreach($pasta->take(3) as $macaroni)
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <div class="menu-img img mb-4"
+                                                     style="background-image: url({{$macaroni->getFirstMedia('pasta')->getUrl()}});"></div>
+                                                <div class="text">
+                                                    <h3>{{$macaroni->name}}</h3>
+                                                    <p>{{$macaroni->description}}</p>
+                                                    <p class="price"><span>${{$macaroni->price}}</span></p>
+                                                    @auth
+                                                        <p>
+                                                            <a href="{{route('addToCart', ['id' => $macaroni->id ])}}"
+                                                               class="btn btn-white btn-outline-white">Add to
+                                                                cart</a>
+                                                        </p>
+                                                    @endauth
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/pasta-2.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="menu-wrap">
-                                            <a href="#" class="menu-img img mb-4"
-                                               style="background-image: url(storage/images/pasta-3.jpg);"></a>
-                                            <div class="text">
-                                                <h3><a href="#">Itallian Pizza</a></h3>
-                                                <p>Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia.</p>
-                                                <p class="price"><span>$2.90</span></p>
-                                                <p><a href="#" class="btn btn-white btn-outline-white">Add to
-                                                        cart</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

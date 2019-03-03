@@ -58,14 +58,14 @@
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 mb-3">
                         <div class="card text-white o-hidden h-100">
-                            <a href="{{route('pizza.create')}}" class="btn btn-primary m-1"> Add new pizza</a>
+                            <a href="{{route('menu-items.create')}}" class="btn btn-primary m-1"> Add new item in menu</a>
                             <a href="{{route('users.create')}}" class="btn btn-primary m-1"> Add user</a>
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 mb-3">
                         <div class="card text-white o-hidden h-100">
                             <a href="{{route('galleries.create')}}" class="btn btn-primary m-1"> Add photo</a>
-                            <a href="{{route('pizza.create')}}" class="btn btn-primary m-1"> Add user</a>
+                            <a href="{{route('menu-items.create')}}" class="btn btn-primary m-1"> Add drink</a>
                         </div>
                     </div>
                 </div>

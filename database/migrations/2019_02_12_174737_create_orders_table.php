@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('user_phone');
             $table->string('user_address');
             $table->integer('sum');
+            $table->boolean('orders_completed')->default(false);
             $table->timestamps();
         });
     }

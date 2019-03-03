@@ -55,10 +55,11 @@ class Cart
     {
         foreach ($this->items as $item) {
 
-            $itemOrders[] = ['pizza_id' => $item['item']->id,
+            $itemOrders[] = ['menu_items_id' => $item['item']->id,
                 'quantity' => $item['qty'],
                 'sum' => $item['price']];
         }
+        /** @var TYPE_NAME $itemOrders */
         return $itemOrders;
     }
 

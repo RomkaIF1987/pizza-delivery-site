@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\Order;
 use App\Classes\OrderItems;
-use App\Models\Pizza;
+use App\Models\MenuItem;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +15,10 @@ class CartController extends Controller
 {
     public function getAddToCart(Request $request, $id)
     {
-        $pizza = Pizza::find($id);
+        $menuItem = MenuItem::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($pizza, $pizza->id);
+        $cart->add($menuItem, $menuItem->id);
 
         $request->session()->put('cart', $cart);
         return back();
@@ -55,11 +55,11 @@ class CartController extends Controller
             return view('cart.show', ['products' => []]);
         }
         $user = Auth::user();
-        $pizza = Pizza::all();
+        $menuItem = MenuItem::all();
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('cart.show', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice,
-            'user' => $user, 'pizza' => $pizza, 'i' => 1, 'itemOrders' => $cart->itemOrders()]);
+            'user' => $user, 'MenuItem' => $menuItem, 'i' => 1, 'itemOrders' => $cart->itemOrders()]);
     }
 
     public function getCartConfirm($order_id)
@@ -67,7 +67,7 @@ class CartController extends Controller
         $user = Auth::user();
         $orders = Order::find($order_id);
         $orderItems = OrderItems::find($order_id);
-        $pizzas = Pizza::find($orderItems->pizza_id);
+        $menuItems = MenuItem::find($orderItems->MenuItem_id);
 
         return view('cart.confirm', ['orders' => $orders, 'i' => 1]);
     }

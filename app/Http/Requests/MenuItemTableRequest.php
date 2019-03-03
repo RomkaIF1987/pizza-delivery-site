@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PizzaTableRequest extends FormRequest
+class MenuItemTableRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,8 @@ class PizzaTableRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'description' => 'required',
-            'size' => 'nullable',
-            'price' => 'nullable'
+            'price' => 'nullable',
+            'type' => 'required'
         ];
     }
 }

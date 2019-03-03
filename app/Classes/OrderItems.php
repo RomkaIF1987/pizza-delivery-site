@@ -2,16 +2,16 @@
 
 namespace App\Classes;
 
-use App\Models\Pizza;
+use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderItems extends Model
 {
     protected $guarded = [];
 
-    public function pizza()
+    public function menuItems()
     {
-        return $this->belongsTo(Pizza::class);
+        return $this->belongsTo(MenuItem::class);
     }
 
     public function order()

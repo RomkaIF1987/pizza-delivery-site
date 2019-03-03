@@ -13,7 +13,7 @@
 @foreach($order->orderItems as $orderItem)
 <tr>
 <td class="text-center">{{$i++}}</td>
-<td class="text-center">{{$orderItem->pizza->name}}</td>
+<td class="text-center">{{$orderItem->menuItems->name}}</td>
 <td class="text-center">{{$orderItem->quantity}}</td>
 <td class="text-center">${{$orderItem->sum}}</td>
 </tr>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
-use App\Models\Pizza;
+use App\Models\MenuItem;
 
 class HomeController extends Controller
 {
@@ -15,8 +15,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('site.index', [
-            'pizzas' => Pizza::all(),
-            'galleries' => Gallery::all()
+            'pizzas' => MenuItem::all()->where('type', 'pizza'),
+            'drinks' => MenuItem::all()->where('type', 'drinks'),
+            'burgers' => MenuItem::all()->where('type', 'burgers'),
+            'pasta' => MenuItem::all()->where('type', 'pasta'),
+            'galleries' => Gallery::all(),
         ]);
     }
 
@@ -43,14 +46,20 @@ class HomeController extends Controller
     public function menu()
     {
         return view('site.menu', [
-            'pizzas' => Pizza::all()
+            'pizzas' => MenuItem::all()->where('type', 'pizza'),
+            'drinks' => MenuItem::all()->where('type', 'drinks'),
+            'burgers' => MenuItem::all()->where('type', 'burgers'),
+            'pasta' => MenuItem::all()->where('type', 'pasta')
         ]);
     }
 
     public function services()
     {
         return view('site.services', [
-            'pizzas' => Pizza::all()
+            'pizzas' => MenuItem::all()->where('type', 'pizza'),
+            'drinks' => MenuItem::all()->where('type', 'drinks'),
+            'burgers' => MenuItem::all()->where('type', 'burgers'),
+            'pasta' => MenuItem::all()->where('type', 'pasta')
         ]);
     }
 }

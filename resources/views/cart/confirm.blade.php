@@ -15,7 +15,7 @@
             @foreach($orders->orderItems as $orderItem)
                 <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$orderItem->pizza->name}}</td>
+                    <td>{{$orderItem->menuItems->name}}</td>
                     <td>{{$orderItem->quantity}}</td>
                     <td>${{$orderItem->sum}}</td>
                 </tr>

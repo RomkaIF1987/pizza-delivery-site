@@ -3,7 +3,7 @@
     <label class="col-sm-2 col-form-label">Role</label>
     <div class="col-md-4">
         <select type="text" class="form-control {{$errors->has('role') ? 'is-invalid' : ''}}" id="role" name="role">
-            <option>{{old('role') ?? $user->role}}</option>
+            <option>buyer</option>
             <option>manager</option>
             <option>courier</option>
         </select>

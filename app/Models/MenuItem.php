@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
-
-class Pizza extends Model implements HasMedia
+class MenuItem extends Model implements HasMedia
 {
     use HasMediaTrait;
 
@@ -18,5 +17,4 @@ class Pizza extends Model implements HasMedia
     {
         return $this->hasMany(OrderItems::class);
     }
-
 }

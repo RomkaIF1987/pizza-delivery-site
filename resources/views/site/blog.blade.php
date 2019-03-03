@@ -29,7 +29,7 @@
             <div class="row d-flex">
                 <div class="col-md-4 d-flex ftco-animate">
                     <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20"
+                        <a href="#" class="block-20"
                            style="background-image: url('storage/images/image_1.jpg');">
                         </a>
                         <div class="text py-4 d-block">
