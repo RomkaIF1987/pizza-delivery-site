@@ -109,7 +109,9 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        $order->orderItems()->whereIn('order_id', $order)->delete();
+        return back();
     }
 
     public function orderCompleted(Order $order)

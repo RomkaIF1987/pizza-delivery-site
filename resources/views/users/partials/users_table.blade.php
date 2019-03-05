@@ -36,18 +36,14 @@
             <td>{{$user->house}}</td>
             <td>{{$user->room}}</td>
             <td>{{$user->role}}</td>
-            <td><a class="edit-modal btn btn-info"
-                   href="{{route('adminEditUser', ['user' => $user->id])}}">
-                    <span class="glyphicon glyphicon-edit"></span> Edit
-                </a>
+            <td class="d-flex"><a class="edit-modal btn btn-info mr-3"
+                   href="{{route('adminEditUser', ['user' => $user->id])}}">Edit</a>
                 <form action="{{route('users.destroy', ['user' => $user->id])}}"
                       method="POST">
                     @csrf
                     @method('delete')
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="delete-modal btn btn-danger">
-                        <span class="glyphicon glyphicon-trash"></span> Delete
-                    </button>
+                    <button class="delete-modal btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>

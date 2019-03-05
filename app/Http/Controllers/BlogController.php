@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GalleryTableRequest;
-use App\Models\Gallery;
-use foo\bar;
+use App\Http\Requests\BlogTableRequest;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
-class GalleryController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,58 +15,63 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return view('site.blog',[
+            'blogs' => Blog::all()
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('gallery.create', [
-            'gallery' => new Gallery()
+        return view('blog.create',[
+            'blog' => new Blog()
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param GalleryTableRequest $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GalleryTableRequest $request)
+    public function store(BlogTableRequest $request)
     {
         $params = $request->validated();
 
-        $gallery = Gallery::create($params);
+        $blog = Blog::create($params);
 
-        if (request()->hasFile('gallery_image')) {
-            $gallery->addMedia(request()->file('gallery_image'))->toMediaCollection('gallery_images');
+        if (request()->hasFile('image')) {
+            $blog->addMedia(request()->file('image'))->toMediaCollection($params['category']);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('homeBlog');
     }
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Gallery  $gallery
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Gallery $gallery)
+    public function show(Blog $blog)
     {
-        //
+        return view('blog.blog-single', [
+            'blog' => $blog
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Gallery  $gallery
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit(Blog $blog)
     {
         //
     }
@@ -76,10 +80,10 @@ class GalleryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gallery  $gallery
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request, Blog $blog)
     {
         //
     }
@@ -87,13 +91,11 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Gallery  $gallery
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(Blog $blog)
     {
-        $gallery->delete();
-
-        return back();
+        //
     }
 }

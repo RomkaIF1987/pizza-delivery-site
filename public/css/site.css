@@ -321,3 +321,7 @@ color: #000;
 .dropdown-menu {
     top: 60px;
 }
+
+.method__item {
+    color: wheat;
+}

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/site.css">
     <link rel="stylesheet" href="/css/lightbox.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -213,10 +214,18 @@
 <script src="/js/sb-admin.min.js"></script>
 <!-- Demo scripts for this page-->
 <script src="/js/demo/datatables-demo.js"></script>
+<script src="/js/lightbox.js"></script>
+<script src="/js/chart.js/Chart.min.js"></script>
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-bar-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-<script src="/js/lightbox.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<script>
+    $('#summernote').summernote({
+        tabsize: 2,
+        height: 100
+    });
+</script>
 <script>
     lightbox.option({
         'resizeDuration': 200,

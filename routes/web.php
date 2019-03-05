@@ -45,3 +45,6 @@ Route::get('manager-complete', 'ManagerController@completeOrder')->name('manager
 
 Route::resource('galleries', 'GalleryController')->middleware('role:admin');
 
+Route::resource('blogs', 'BlogController')->middleware('role:admin,manager');
+Route::resource('comments', 'CommentController');
+

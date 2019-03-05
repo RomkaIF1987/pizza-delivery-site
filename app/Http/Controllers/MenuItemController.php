@@ -33,7 +33,7 @@ class MenuItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param MenuItemTableRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(MenuItemTableRequest $request)
@@ -42,10 +42,8 @@ class MenuItemController extends Controller
 
         $menuItem = MenuItem::create($params);
 
-        $collection = $params['type'];
-
         if (request()->hasFile('image')) {
-            $menuItem->addMedia(request()->file('image'))->toMediaCollection($collection);
+            $menuItem->addMedia(request()->file('image'))->toMediaCollection($params['type']);
         }
 
         return redirect()->route('home');
@@ -65,34 +63,47 @@ class MenuItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\MenuItem  $menuItem
+     * @param MenuItem $menuItem
      * @return \Illuminate\Http\Response
      */
     public function edit(MenuItem $menuItem)
     {
-        //
+        return view('menuItem.edit', [
+            'menuItem' => $menuItem
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MenuItem  $menuItem
-     * @return \Illuminate\Http\Response
+     * @param MenuItemTableRequest $request
+     * @param MenuItem $menuItem
+     * @return void
      */
-    public function update(Request $request, MenuItem $menuItem)
+    public function update(MenuItemTableRequest $request, MenuItem $menuItem)
     {
-        //
+        $params = $request->validated();
+
+        $menuItem->update($params);
+
+        if (request()->hasFile('image')) {
+            $menuItem->replaceMedia(request()->file('image'))->toMediaCollection($params['type']);
+        }
+
+        return redirect()->route('home');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\MenuItem  $menuItem
-     * @return \Illuminate\Http\Response
+     * @param MenuItem $menuItem
+     * @return void
+     * @throws \Exception
      */
     public function destroy(MenuItem $menuItem)
     {
-        //
+        $menuItem->delete();
+
+        return back();
     }
 }

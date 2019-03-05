@@ -3448,6 +3448,7 @@ input[type="button"].btn-block {
 
 .dropdown-menu {
     position: absolute;
+    top: 40px;
     top: 100%;
     left: 0;
     z-index: 1000;
@@ -3672,6 +3673,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu.show {
+    top: 60px;
     display: block;
 }
 
@@ -11315,7 +11317,7 @@ body {
 
 @media (min-width: 768px) {
     .sidebar {
-        width: 225px !important;
+        width: 125px !important;
     }
 
     .sidebar .nav-item .nav-link {

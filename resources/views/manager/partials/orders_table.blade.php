@@ -7,6 +7,7 @@
         <th class="text-center">Address delivery</th>
         <th class="text-center">Order sum</th>
         <th class="text-center">Order complete</th>
+        <th class="text-center">Action</th>
     </tr>
     </thead>
     <tfoot>
@@ -17,6 +18,7 @@
         <th class="text-center">Address delivery</th>
         <th class="text-center">Order sum</th>
         <th class="text-center">Order complete</th>
+        <th class="text-center">Action</th>
     </tr>
     </tfoot>
     <tbody>
@@ -47,20 +49,21 @@
                     </div>
                 </form>
             </td>
-            {{--<td><a class="edit-modal btn btn-info"--}}
+            <td>
+                {{--<a class="edit-modal btn btn-info"--}}
             {{--href="{{route('adminEditUser', ['user' => $user->id])}}">--}}
             {{--<span class="glyphicon glyphicon-edit"></span> Edit--}}
             {{--</a>--}}
-            {{--<form action="{{route('users.destroy', ['user' => $user->id])}}"--}}
-            {{--method="POST">--}}
-            {{--@csrf--}}
-            {{--@method('delete')--}}
-            {{--<input type="hidden" name="_method" value="DELETE">--}}
-            {{--<button class="delete-modal btn btn-danger">--}}
-            {{--<span class="glyphicon glyphicon-trash"></span> Delete--}}
-            {{--</button>--}}
-            {{--</form>--}}
-            {{--</td>--}}
+            <form action="{{route('orders.destroy', ['order' => $order->id])}}"
+            method="POST">
+            @csrf
+            @method('delete')
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="delete-modal btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+            </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

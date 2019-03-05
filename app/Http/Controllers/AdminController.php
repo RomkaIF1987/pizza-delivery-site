@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Order;
+use App\Models\MenuItem;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -11,7 +12,8 @@ class AdminController extends Controller
     {
         return view('admin.index', [
             'users' => User::all(),
-            'orders' => Order::all()
+            'orders' => Order::all(),
+            'menuItems' => MenuItem::all()
         ]);
     }
 

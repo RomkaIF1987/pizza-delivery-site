@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\MenuItem;
 
@@ -30,7 +31,9 @@ class HomeController extends Controller
 
     public function blog()
     {
-        return view('site.blog');
+        return view('site.blog',[
+            'blogs' => Blog::all()
+        ]);
     }
 
     public function blogSingle()

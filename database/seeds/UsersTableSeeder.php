@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'phone' => '1234567890',
             'password' => bcrypt('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'logo' => 'admin_logo.jpeg'
         ]);
     }
 }
