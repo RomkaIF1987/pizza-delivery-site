@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Order;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
@@ -15,7 +16,8 @@ class ManagerController extends Controller
     public function index()
     {
         return view('manager.index', [
-            'orders' => Order::all()->where('orders_completed', false)
+            'orders' => Order::all()->where('orders_completed', false),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -27,41 +29,8 @@ class ManagerController extends Controller
     public function completeOrder()
     {
         return view('manager.index-complete', [
-            'orders' => Order::all()->where('orders_completed', true)
+            'orders' => Order::all()->where('orders_completed', true),
+            'blogs' => Blog::all()
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

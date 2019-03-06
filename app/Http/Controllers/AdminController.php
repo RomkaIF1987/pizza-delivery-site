@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\Order;
 use App\Models\MenuItem;
 use App\Models\User;
+use App\Models\Blog;
 
 class AdminController extends Controller
 {
@@ -13,21 +14,24 @@ class AdminController extends Controller
         return view('admin.index', [
             'users' => User::all(),
             'orders' => Order::all(),
-            'menuItems' => MenuItem::all()
+            'menuItems' => MenuItem::all(),
+            'blogs' => Blog::all()
         ]);
     }
 
     public function userEdit(User $user)
     {
         return view('admin.users-edit', [
-            'user' => $user
+            'user' => $user,
+            'blogs' => Blog::all()
         ]);
     }
     public function charts()
     {
         return view('admin.charts', [
             'users' => User::all(),
-            'orders' => Order::all()
+            'orders' => Order::all(),
+            'blogs' => Blog::all()
         ]);
     }
 }

@@ -3,21 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MenuItemTableRequest;
+use App\Models\Blog;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
 
 class MenuItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +17,8 @@ class MenuItemController extends Controller
     public function create()
     {
         return view('menuItem.create', [
-            'menuItem' => new MenuItem()
+            'menuItem' => new MenuItem(),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -50,17 +42,6 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\MenuItem  $menuItem
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MenuItem $menuItem)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param MenuItem $menuItem
@@ -69,7 +50,8 @@ class MenuItemController extends Controller
     public function edit(MenuItem $menuItem)
     {
         return view('menuItem.edit', [
-            'menuItem' => $menuItem
+            'menuItem' => $menuItem,
+            'blogs' => Blog::all()
         ]);
     }
 

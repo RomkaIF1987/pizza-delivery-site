@@ -37,7 +37,9 @@
                                 <div class="meta">
                                     <div><a href="#">{{date('M j, Y', strtotime($blog->created_at))}}</a></div>
                                     <div><a href="#">{{$blog->user->name}}</a></div>
-                                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                    <div><a href="#" class="meta-chat"><span
+                                                    class="icon-chat"></span> {{DB::table('comments')->where('blog_id', $blog->id)->count()}}
+                                        </a></div>
                                 </div>
                                 <h3 class="heading mt-2"><a
                                             href="{{route('blogs.show', ['blog' => $blog])}}">{{$blog->title}}</a></h3>
@@ -47,21 +49,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="row mt-5">
-                <div class="col text-center">
-                    <div class="block-27">
-                        <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&gt;</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
+        <div class="align-content-center">{{$blogs->links()}}</div>
     </section>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\Order;
 use App\Classes\OrderItems;
+use App\Models\Blog;
 use App\Models\MenuItem;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -59,17 +60,16 @@ class CartController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('cart.show', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice,
-            'user' => $user, 'MenuItem' => $menuItem, 'i' => 1, 'itemOrders' => $cart->itemOrders()]);
+            'user' => $user, 'MenuItem' => $menuItem, 'i' => 1, 'itemOrders' => $cart->itemOrders(),'blogs' => Blog::all()]);
     }
 
     public function getCartConfirm($order_id)
     {
-        $user = Auth::user();
         $orders = Order::find($order_id);
         $orderItems = OrderItems::find($order_id);
         $menuItems = MenuItem::find($orderItems->MenuItem_id);
 
-        return view('cart.confirm', ['orders' => $orders, 'i' => 1]);
+        return view('cart.confirm', ['orders' => $orders, 'i' => 1, 'blogs' => Blog::all()]);
     }
 
 }

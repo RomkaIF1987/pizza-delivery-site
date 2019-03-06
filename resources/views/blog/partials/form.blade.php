@@ -1,7 +1,7 @@
 @csrf
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Title</label>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <input type="text" class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" id="title" name="title"
                placeholder="Title" value="{{old('title') ?? $blog->title}}" required autofocus>
         @if($errors->has('title'))
@@ -13,7 +13,7 @@
 </div>
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Description</label>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <textarea type="text" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" id="description"
                   name="description"
                   placeholder="Description" required>{{old('description') ?? $blog->description}}</textarea>
@@ -26,7 +26,7 @@
 </div>
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Body</label>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <textarea class="form-control {{$errors->has('body') ? 'is-invalid' : ''}}" id="summernote"
                   name="body"
                   placeholder="Body" required>{{old('body') ?? $blog->body}}</textarea>
@@ -40,7 +40,7 @@
 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">Category</label>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <select type="text" class="form-control {{$errors->has('category') ? 'is-invalid' : ''}}" id="category"
                 name="category">
             <option style="background-color: grey" disabled selected>Chose...</option>

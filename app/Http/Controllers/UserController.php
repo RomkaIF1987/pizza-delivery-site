@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersTableRequest;
+use App\Models\Blog;
 use App\Models\User;
 use Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,8 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create', [
-            'user' => new User()
+            'user' => new User(),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -46,7 +48,8 @@ class UserController extends Controller
     public function show()
     {
         return view('users.show', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -58,7 +61,8 @@ class UserController extends Controller
     public function edit()
     {
         return view('users.edit', [
-            'user' => auth()->user()
+            'user' => auth()->user(),
+            'blogs' => Blog::all()
         ]);
     }
 

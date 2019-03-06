@@ -33,7 +33,7 @@
                         <div class="img mb-4" style="background-image: url(storage/images/person_1.jpg);"></div>
                         <div class="info text-center">
                             <h3>Tom Smith</h3>
-                            <span class="position">Hair Specialist</span>
+                            <span class="position">Chef</span>
                             <div class="text">
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and
                                     Consonantia, there live the blind texts.</p>
@@ -46,7 +46,7 @@
                         <div class="img mb-4" style="background-image: url(storage/images/person_2.jpg);"></div>
                         <div class="info text-center">
                             <h3>Mark Wilson</h3>
-                            <span class="position">Beard Specialist</span>
+                            <span class="position">Cook</span>
                             <div class="text">
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and
                                     Consonantia, there live the blind texts.</p>
@@ -59,7 +59,7 @@
                         <div class="img mb-4" style="background-image: url(storage/images/person_3.jpg);"></div>
                         <div class="info text-center">
                             <h3>Patrick Jacobson</h3>
-                            <span class="position">Hair Stylist</span>
+                            <span class="position">Bartender</span>
                             <div class="text">
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and
                                     Consonantia, there live the blind texts.</p>
@@ -72,7 +72,7 @@
                         <div class="img mb-4" style="background-image: url(storage/images/person_4.jpg);"></div>
                         <div class="info text-center">
                             <h3>Ivan Dorchsner</h3>
-                            <span class="position">Beard Specialist</span>
+                            <span class="position">Cook</span>
                             <div class="text">
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and
                                     Consonantia, there live the blind texts.</p>
@@ -133,37 +133,5 @@
             </div>
         </div>
     </section>
-
-    <section class="ftco-appointment">
-        <div class="overlay"></div>
-        <div class="container-wrap">
-            <div class="row no-gutters d-md-flex align-items-center">
-                <div class="col-md-6 d-flex align-self-stretch">
-                    <div id="map"></div>
-                </div>
-                <div class="col-md-6 appointment ftco-animate">
-                    <h3 class="mb-3">Contact Us</h3>
-                    <form action="#" class="appointment-form">
-                        <div class="d-md-flex">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="d-me-flex">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="3" class="form-control"
-                                      placeholder="Message"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Send" class="btn btn-primary py-3 px-4">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.partials.contact')
 @endsection

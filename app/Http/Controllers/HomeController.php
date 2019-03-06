@@ -21,29 +21,36 @@ class HomeController extends Controller
             'burgers' => MenuItem::all()->where('type', 'burgers'),
             'pasta' => MenuItem::all()->where('type', 'pasta'),
             'galleries' => Gallery::all(),
+            'blogs' => Blog::all()
         ]);
     }
 
     public function about()
     {
-        return view('site.about');
+        return view('site.about',[
+            'blogs' => Blog::all()
+        ]);
     }
 
     public function blog()
     {
         return view('site.blog',[
-            'blogs' => Blog::all()
+            'blogs' => Blog::paginate(6)
         ]);
     }
 
     public function blogSingle()
     {
-        return view('site.blog-single');
+        return view('site.blog-single', [
+            'blogs' => Blog::all()
+        ]);
     }
 
     public function contact()
     {
-        return view('site.contact');
+        return view('site.contact', [
+            'blogs' => Blog::all()
+        ]);
     }
 
     public function menu()
@@ -52,7 +59,8 @@ class HomeController extends Controller
             'pizzas' => MenuItem::all()->where('type', 'pizza'),
             'drinks' => MenuItem::all()->where('type', 'drinks'),
             'burgers' => MenuItem::all()->where('type', 'burgers'),
-            'pasta' => MenuItem::all()->where('type', 'pasta')
+            'pasta' => MenuItem::all()->where('type', 'pasta'),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -62,7 +70,8 @@ class HomeController extends Controller
             'pizzas' => MenuItem::all()->where('type', 'pizza'),
             'drinks' => MenuItem::all()->where('type', 'drinks'),
             'burgers' => MenuItem::all()->where('type', 'burgers'),
-            'pasta' => MenuItem::all()->where('type', 'pasta')
+            'pasta' => MenuItem::all()->where('type', 'pasta'),
+            'blogs' => Blog::all()
         ]);
     }
 }

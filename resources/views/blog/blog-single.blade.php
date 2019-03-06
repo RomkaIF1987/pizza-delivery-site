@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="pt-5 mt-5">
-                        <h3 class="mb-5">6 Comments</h3>
+                        <h3 class="mb-5">{{DB::table('comments')->where('blog_id', $blog->id)->count()}} Comments</h3>
                         <ul class="comment-list">
                             @foreach($blog->comments as $comment)
                                 <li class="comment">
@@ -51,83 +51,6 @@
                                     </div>
                                 </li>
                             @endforeach
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>John Doe</h3>
-                                    <div class="meta">June 27, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim
-                                        sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                                <ul class="children">
-                                    <li class="comment">
-                                        <div class="vcard bio">
-                                            <img src="images/person_1.jpg" alt="Image placeholder">
-                                        </div>
-                                        <div class="comment-body">
-                                            <h3>John Doe</h3>
-                                            <div class="meta">June 27, 2018 at 2:21pm</div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                                laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
-                                                saepe enim sapiente iste iure! Quam voluptas earum impedit
-                                                necessitatibus, nihil?</p>
-                                            <p><a href="#" class="reply">Reply</a></p>
-                                        </div>
-                                        <ul class="children">
-                                            <li class="comment">
-                                                <div class="vcard bio">
-                                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                                </div>
-                                                <div class="comment-body">
-                                                    <h3>John Doe</h3>
-                                                    <div class="meta">June 27, 2018 at 2:21pm</div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Pariatur quidem laborum necessitatibus, ipsam impedit vitae
-                                                        autem, eum officia, fugiat saepe enim sapiente iste iure! Quam
-                                                        voluptas earum impedit necessitatibus, nihil?</p>
-                                                    <p><a href="#" class="reply">Reply</a></p>
-                                                </div>
-
-                                                <ul class="children">
-                                                    <li class="comment">
-                                                        <div class="vcard bio">
-                                                            <img src="images/person_1.jpg" alt="Image placeholder">
-                                                        </div>
-                                                        <div class="comment-body">
-                                                            <h3>John Doe</h3>
-                                                            <div class="meta">June 27, 2018 at 2:21pm</div>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                Pariatur quidem laborum necessitatibus, ipsam impedit
-                                                                vitae autem, eum officia, fugiat saepe enim sapiente
-                                                                iste iure! Quam voluptas earum impedit necessitatibus,
-                                                                nihil?</p>
-                                                            <p><a href="#" class="reply">Reply</a></p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>John Doe</h3>
-                                    <div class="meta">June 27, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim
-                                        sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                            </li>
                         </ul>
                         <!-- END comment-list -->
 
@@ -144,7 +67,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea name="message" id="summernote" cols="20" rows="10"
+                                    <textarea name="message" id="message" cols="10" rows="5"
                                               class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -168,62 +91,33 @@
                     <div class="sidebar-box ftco-animate">
                         <div class="categories">
                             <h3>Categories</h3>
-                            <li><a href="#">Tour <span>(12)</span></a></li>
-                            <li><a href="#">Hotel <span>(22)</span></a></li>
-                            <li><a href="#">Coffee <span>(37)</span></a></li>
-                            <li><a href="#">Drinks <span>(42)</span></a></li>
-                            <li><a href="#">Foods <span>(14)</span></a></li>
-                            <li><a href="#">Travel <span>(140)</span></a></li>
+                            <li><a href="#">Travel <span>({{DB::table('blogs')->where('category', 'Travel')->count()}})</span></a></li>
+                            <li><a href="#">Foods <span>({{DB::table('blogs')->where('category', 'Foods')->count()}})</span></a></li>
+                            <li><a href="#">Drinks <span>({{DB::table('blogs')->where('category', 'Drinks')->count()}})</span></a></li>
+                            <li><a href="#">Coffee <span>({{DB::table('blogs')->where('category', 'Coffee')->count()}})</span></a></li>
                         </div>
                     </div>
                     <div class="sidebar-box ftco-animate">
                         <h3>Recent Blog</h3>
+                        @foreach($blogs as $blog)
                         <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <a class="blog-img mr-4" style="background-image: url({{$blog->getFirstMedia($blog->category)->getUrl()}});"></a>
                             <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the
-                                        blind texts</a></h3>
+                                <h3 class="heading mt-2"><a
+                                            href="{{route('blogs.show', ['blog' => $blog])}}">{{$blog->title}}</a></h3>
+                                <p>{{\Illuminate\Support\Str::limit($blog->description, 60)}}</p>
                                 <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                    <div><a href="#">{{date('M j, Y', strtotime($blog->created_at))}}</a></div>
+                                    <div><a href="#">{{$blog->user->name}}</a></div>
+                                    <div><a href="#" class="meta-chat"><span
+                                                    class="icon-chat"></span> {{DB::table('comments')->where('blog_id', $blog->id)->count()}}
+                                        </a></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the
-                                        blind texts</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the
-                                        blind texts</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Paragraph</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
-                            necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
-                            consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                        @endforeach
                     </div>
                 </div>
-
             </div>
         </div>
     </section> <!-- .section -->

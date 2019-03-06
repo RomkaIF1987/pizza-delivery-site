@@ -3,22 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GalleryTableRequest;
+use App\Models\Blog;
 use App\Models\Gallery;
 use foo\bar;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +18,8 @@ class GalleryController extends Controller
     public function create()
     {
         return view('gallery.create', [
-            'gallery' => new Gallery()
+            'gallery' => new Gallery(),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -48,40 +40,6 @@ class GalleryController extends Controller
         }
 
         return redirect()->route('home');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Gallery  $gallery
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Gallery $gallery)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Gallery  $gallery
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Gallery $gallery)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gallery  $gallery
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Gallery $gallery)
-    {
-        //
     }
 
     /**

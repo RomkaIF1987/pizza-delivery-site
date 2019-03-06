@@ -28,7 +28,8 @@ class BlogController extends Controller
     public function create()
     {
         return view('blog.create',[
-            'blog' => new Blog()
+            'blog' => new Blog(),
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -61,7 +62,8 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view('blog.blog-single', [
-            'blog' => $blog
+            'blog' => $blog,
+            'blogs' => Blog::all()
         ]);
     }
 
@@ -73,7 +75,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('blog.edit', [
+            'blog' => $blog,
+            'blogs' => Blog::all()
+        ]);
     }
 
     /**
@@ -83,9 +88,17 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(BlogTableRequest $request, Blog $blog)
     {
-        //
+        $params = $request->validated();
+
+        $blog->update($params);
+
+        if (request()->hasFile('image')) {
+            $blog->addMedia(request()->file('image'))->toMediaCollection($params['category']);
+        }
+
+        return redirect(route('adminPanelIndex'));
     }
 
     /**
@@ -96,6 +109,6 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
     }
 }
