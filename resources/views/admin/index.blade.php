@@ -20,6 +20,7 @@
                     <li><a class="nav-link p-0" href="#orders">Orders</a></li>
                     <li><a class="nav-link p-0" href="#menu_items">Menu items</a></li>
                     <li><a class="nav-link p-0" href="#blogs">Blogs</a></li>
+                    <li><a class="nav-link p-0" href="#gallery">Gallery</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -101,6 +102,17 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             @include('blog.partials.blogs_table')
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3" id="gallery">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Blogs Table
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            @include('gallery.partials.gallery_table')
                         </div>
                     </div>
                 </div>

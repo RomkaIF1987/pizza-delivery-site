@@ -1,33 +1,29 @@
 <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
     <thead>
     <tr>
-        <th class="text-center">Title</th>
+        <th class="text-center">Photo</th>
+        <th class="text-center">Name</th>
         <th class="text-center">Description</th>
-        <th class="text-center">Body</th>
-        <th class="text-center">Category</th>
         <th class="text-center">Action</th>
-
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <th class="text-center">Title</th>
+        <th class="text-center">Photo</th>
+        <th class="text-center">Name</th>
         <th class="text-center">Description</th>
-        <th class="text-center">Body</th>
-        <th class="text-center">Category</th>
         <th class="text-center">Action</th>
+
     </tr>
     </tfoot>
     <tbody>
-    @foreach($blogs as $blog)
+    @foreach($galleries as $gallery)
         <tr>
-            <td>{{$blog->title}}</td>
-            <td>{{$blog->description}}</td>
-            <td>{{$blog->body}}</td>
-            <td>{{$blog->category}}</td>
-            <td class="d-flex"><a class="edit-modal btn btn-info mr-3"
-                                  href="{{route('blogs.edit', ['blog' => $blog->id])}}">Edit</a>
-                <form action="{{route('blogs.destroy', ['blog' => $blog->id])}}"
+            <td><img src="{{$gallery->getFirstMedia('gallery_images')->getUrl()}}" width="150" height="100"></td>
+            <td>{{$gallery->name}}</td>
+            <td>{{$gallery->description}}</td>
+            <td>
+                <form action="{{route('galleries.destroy', ['gallery' => $gallery->id])}}"
                       method="POST">
                     @csrf
                     @method('delete')

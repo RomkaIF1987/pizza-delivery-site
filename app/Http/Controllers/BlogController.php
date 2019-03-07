@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * View Blog posts on the home page
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a new blog post
      *
      * @return \Illuminate\Http\Response
      */

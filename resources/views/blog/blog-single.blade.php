@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="comment-body">
                                         <h3>{{$comment->name}}</h3>
-                                        <div class="meta">{{date('M j, Y H:m', strtotime($comment->created_at))}}</div>
+                                        <div class="meta">{{date('M j, Y H:i', strtotime($comment->created_at))}}</div>
                                         <p>{{$comment->message}}</p>
                                         <p><a href="#" class="reply">Reply</a></p>
                                     </div>
